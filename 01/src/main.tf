@@ -8,7 +8,10 @@ terraform {
   required_version = ">=1.8.4" /*Многострочный комментарий.
  Требуемая версия terraform */
 }
-provider "docker" {}
+
+provider "docker" {
+    host = "ssh://debian@89.169.132.237"
+}
 
 variable "mysql_root_password" {
   description = "mysql root password"
