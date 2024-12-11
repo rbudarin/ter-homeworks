@@ -10,6 +10,18 @@ terraform {
 }
 provider "docker" {}
 
+variable "mysql_root_password" {
+  description = "mysql root password"
+  type        = string
+  default = "YtReWq4321"
+}
+
+variable "mysql_password" {
+  description = "mysql password"
+  type        = string
+  default = "QwErTy1234"
+}
+
 #однострочный комментарий
 
 resource "random_password" "random_string" {
@@ -20,7 +32,7 @@ resource "random_password" "random_string" {
   min_numeric = 1
 }
 
-
+/*
 resource "docker_image" "nginx" {
   name         = "nginx:latest"
   keep_locally = true
@@ -33,6 +45,30 @@ resource "docker_container" "nginx" {
   ports {
     internal = 80
     external = 9090
+  }
+}
+
+resource "docker_image" "mysql" {
+  name = "mysql:8.0"
+}
+*/
+
+resource "docker_container" "mysql" {
+  image = docker_image.mysql.image_id
+  name  = "example_${random_password.random_string.result}"
+
+  env = [
+    "MYSQL_ROOT_PASSWORD=${var.mysql_root_password}",
+    "MYSQL_DATABASE=wordpress",
+    "MYSQL_USER=wordpress",
+    "MYSQL_PASSWORD=${var.mysql_password}",
+    "MYSQL_ROOT_HOST=%"
+  ]
+
+  ports {
+    internal = 3306
+    external = 3306
+    ip       = "127.0.0.1"
   }
 }
 
