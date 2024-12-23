@@ -76,6 +76,10 @@ variable "metadata" {
  description = "Access key map"
 }
 
+variable "test" {
+  type = list(map(list(string)))
+}
+
 ###ssh vars
 
 variable "vms_ssh_root_key" {
