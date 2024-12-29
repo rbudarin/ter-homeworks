@@ -30,3 +30,30 @@ variable "vpc_name" {
   default     = "develop"
   description = "VPC network&subnet name"
 }
+
+variable "vm_web_image" {
+  type        = string
+  description = "VM OS image" 
+}
+
+variable "vm_web_hdd" {
+  type = list(object({
+    type  = string
+    size  = number
+  }))
+  description = "VM HDD type"  
+}
+
+variable "vms_resources" {
+  type = list(object({
+    cores         = number
+    memory        = number
+    core_fraction = number
+  }))
+ description = "VM resourses map"
+}
+
+variable "web_platform" {
+  type        = string
+  description = "core standard"
+}
