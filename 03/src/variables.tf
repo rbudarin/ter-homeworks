@@ -57,3 +57,15 @@ variable "web_platform" {
   type        = string
   description = "core standard"
 }
+
+variable "each_vm" {
+  type = list(object({ 
+    vm_name       = string
+    cpu           = number
+    ram           = number
+    core_fraction = number
+    disk_type     = string
+    disk_volume   = number
+    }))
+  description = "each_vm"
+}
