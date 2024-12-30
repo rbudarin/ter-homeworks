@@ -69,3 +69,7 @@ variable "each_vm" {
     }))
   description = "each_vm"
 }
+
+locals {
+  public_key = file("~/.ssh/ya.pub")
+}
