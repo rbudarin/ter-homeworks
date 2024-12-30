@@ -21,7 +21,7 @@ resource "yandex_compute_instance" "vm_db" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/ya.pub")}"
+    ssh-keys = "ubuntu:${local.public_key}"
   }
   
   scheduling_policy { preemptible = true }
