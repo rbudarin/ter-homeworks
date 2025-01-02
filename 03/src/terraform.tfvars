@@ -31,3 +31,14 @@ each_vm = [
     disk_volume   = 30
   }
 ]
+
+storage_vm = [
+  {
+    vm_name = "storage"
+    cpu = 2
+    core_fraction = 20
+    ram = 1
+    disk_type = "network-hdd"
+    disk_volume = 20 
+  }
+]
