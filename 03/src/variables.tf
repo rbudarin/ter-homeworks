@@ -70,3 +70,11 @@ variable "each_vm" {
   description = "each_vm"
 }
 
+variable "storage_vm" {
+  type = map(any)
+  description = "storage_vm"
+}
+
+locals {
+  public_key = file("~/.ssh/ya.pub")
+}
